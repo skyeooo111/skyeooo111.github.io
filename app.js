@@ -305,9 +305,7 @@ function applyTheme(theme) {
   themeButton.setAttribute('aria-pressed', String(dark));
   document.querySelector('meta[name="theme-color"]').content = dark ? '#131313' : '#ffffff';
 }
-let initialTheme = 'dark';
-try { if (localStorage.getItem('portfolio-theme') === 'light') initialTheme = 'light'; } catch {}
-applyTheme(initialTheme);
+applyTheme('light');
 themeButton.addEventListener('click', () => {
   const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
   if (!reduceMotion.matches) {
@@ -324,7 +322,6 @@ themeButton.addEventListener('click', () => {
     }
   }
   applyTheme(theme);
-  try { localStorage.setItem('portfolio-theme', theme); } catch {}
 });
 
 const thanksCard = cards[5];
